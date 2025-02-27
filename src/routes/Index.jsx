@@ -9,7 +9,7 @@ import Profile from "../pages/Profile"
 const Index = () => {
     return (
         <Routes>
-            <Route index element={<Login />} path="/login" />
+            <Route index element={<Login />} path="/" />
 
             <Route element={<Layout />}>
                 <Route element={<Home />} path="/home" />
