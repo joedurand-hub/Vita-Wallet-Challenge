@@ -1,0 +1,15 @@
+import { Outlet } from "react-router-dom"
+import Sidebar from "../components/Sidebar/Index"
+
+const Index = () => {
+    return (
+        <div style={{ flex: 1 }}>
+            <Sidebar />
+            <main>
+                <Outlet />
+            </main>
+        </div>
+    )
+}
+
+export default Index
