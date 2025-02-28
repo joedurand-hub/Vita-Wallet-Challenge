@@ -1,0 +1,29 @@
+.section {
+    padding: 20px;
+}
+
+.title {
+    font-size: 48px;
+}
+
+.container {
+    display: flex;
+    margin-top: 90px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.form {
+    width: 387px;
+}
+
+.forgotPassword {
+    top: -10px;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: end;
+}

@@ -1,38 +1,84 @@
 /* eslint-disable no-unused-vars */
-import { useState, useContext } from "react";
+import styles from "./styles/login.module.css"
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext"
 import TextField from "../components/TextField/TextField"
 import eyeOff from "../assets/icons/eye-off.png"
+import eye from "../assets/icons/eye.png"
+import check from "../assets/icons/check.png"
 import Button from "../components/Button/Button"
-// import moneyIncome from "../assets/ilustrations/money-income.png"
+import moneyIncome from "../assets/ilustrations/money-income.png"
 
 const Login = () => {
+    const navigate = useNavigate()
     const { login, user, isAuthenticated } = useContext(AuthContext);
+    const [emailIsCorrectIcon, setEmailIsCorrectIcon] = useState(false)
+    const [viewPassword, setViewPassword] = useState(false)
+    const [form, setForm] = useState({
+        email: '',
+        password: '',
+    })
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target
+        setForm((prevFormState) => ({
+            ...prevFormState,
+            [name]: value
+        }))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await login({
+            email: form.email,
+            password: form.password,
+            dev_mode: "true"
+        });
+    };
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            console.log(user.data)
+            navigate("/inicio");
+        }
+    }, [isAuthenticated, navigate]);
+
+
     return (
-        <section style={{ padding: 20 }}>
-            <h1 style={{ fontSize: 48 }}>Iniciar sesión</h1>
-            <div style={{ display: "flex", marginTop: 90, flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between" }}>
-                <form style={{ width: 387 }}>
-
+        <section className={styles.section}>
+            <h1 className={styles.title}>Iniciar sesión</h1>
+            <div className={styles.container}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <TextField
-                        type="email"
+                        type="text"
+                        name="email"
                         label={"Correo electrónico"}
+                        onChange={handleInputChange}
+                        value={form.email}
                         placeholder={"juan@gmail.com"}
+                    // icon={ isAuthenticated === true ? }
                     />
                     <TextField
-                        type="password"
+                        type={viewPassword ? "text" : "password"}
+                        name="password"
                         label={"Contraseña"}
+                        onChange={handleInputChange}
+                        value={form.password}
                         placeholder={"Escribe tu contraseña"}
-                        icon={eyeOff}
+                        iconFunction={() => setViewPassword(!viewPassword)}
+                        icon={viewPassword ? eye : eyeOff}
                     />
-                    <p style={
-                        { top: -10, margin: 0, marginBottom: 30, padding: 0, display: "flex", position: "relative", justifyContent: "end", }
-
-                    }>¿Olvidaste tu contraseña?</p>
-                    <Button backgroundType="disabled" size="large" name="Iniciar sesión" />
+                    <p className={styles.forgotPassword}>¿Olvidaste tu contraseña?</p>
+                    <Button
+                        type="submit"
+                        backgroundType="gradient"
+                        size="large"
+                        name="Iniciar sesión"
+                    />
                 </form>
-                {/* <img src={moneyIncome} width={662} height={640} /> */}
-            </div >
+                <img src={moneyIncome} width={662} height={640} />
+            </div>
         </section>
     )
 }

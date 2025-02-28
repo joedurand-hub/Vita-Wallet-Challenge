@@ -3,7 +3,12 @@ import { BASE_URL, SIGN_IN, GET_PROFILE, GET_USER_PRICES, GET_TRANSACTIONS, POST
 
 export const apiService = {
     signIn: async (credentials) => {
-      const response = await axios.post(`${BASE_URL}${SIGN_IN}`, credentials);
+      console.log (credentials)
+      const response = await axios.post(`${BASE_URL}${SIGN_IN}`, credentials, {
+        headers: {
+            "Content-Type": "application/json",
+            "app-name": "ANGIE"
+        }});
       return response.data;
     },
     

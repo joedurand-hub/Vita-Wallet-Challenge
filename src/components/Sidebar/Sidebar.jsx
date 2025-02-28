@@ -6,7 +6,6 @@ const Sidebar = () => {
     return (
         <aside className={styles.sidebar}>
             <div className={styles.content_buttons}>
-
                 <SidebarButton label="Inicio" to="/inicio" />
                 <SidebarButton label="Transferir" to="/transferir" />
                 <SidebarButton label="Recargar" to="/recargar" />
