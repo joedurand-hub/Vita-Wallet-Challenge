@@ -1,13 +1,12 @@
 import axios from "axios"
-import { BASE_URL, SIGN_IN, GET_PROFILE, GET_USER_PRICES, GET_TRANSACTIONS, POST_TRANSACTION } from "../constants";
+import { BASE_URL, SIGN_IN, GET_PROFILE, GET_USER_PRICES, GET_TRANSACTIONS, POST_TRANSACTION, APP_NAME } from "../constants";
 
 export const apiService = {
     signIn: async (credentials) => {
-      console.log (credentials)
       const response = await axios.post(`${BASE_URL}${SIGN_IN}`, credentials, {
         headers: {
             "Content-Type": "application/json",
-            "app-name": "ANGIE"
+            "app-name": APP_NAME
         }});
       return response.data;
     },

@@ -4,7 +4,7 @@ export const GET_PROFILE = "profile"
 export const GET_USER_PRICES = "users/get_crypto_multi_prices"
 export const GET_TRANSACTIONS = "transactions"
 export const POST_TRANSACTION = "transactions/exchange"
-
+export const APP_NAME = "ANGIE"
 
 export const colors = {
     black: "#010E11",
