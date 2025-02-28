@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import { colors } from "../../constants/index"
+import styles from "./textfield.module.css"
 
-const Index = ({ label, placeholder, type, name, icon }) => {
+const Index = ({ htmlFor, label, placeholder, type, name, icon }) => {
   return (
     <div style={{ display: "flex", height: 100, width: 387, flexDirection: "column", position: "relative" }}>
-      <label style={{ fontFamily: "Nunito", fontSize: 14 }}>{label}</label>
+      <label htmlFor={htmlFor} style={{ fontFamily: "Nunito", fontSize: 14 }}>{label}</label>
       <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
         <input
+          htmlFor={htmlFor}
+          className={styles.input}
           type={type}
           placeholder={placeholder}
           name={name}

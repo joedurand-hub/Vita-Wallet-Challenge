@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Index"
 
 const Index = () => {
     return (
-        <div style={{ flex: 1 }}>
+        <div style={{ display: "flex", flexDirection: "row", height: "auto" }}>
             <Sidebar />
             <main>
                 <Outlet />

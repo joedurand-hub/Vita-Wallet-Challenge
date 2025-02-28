@@ -15,6 +15,10 @@
     --blue-gradient: linear-gradient(to right, #05BCB9, #167287);
     --red: #CE3434;
   }
+
+  body {
+    margin: 0
+  }
   
   
   
