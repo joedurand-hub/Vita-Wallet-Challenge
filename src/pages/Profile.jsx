@@ -1,8 +1,7 @@
-
-const Index = () => {
+const Profile = () => {
     return (
-        <div>Profile</div>
+        <div>Perfil</div>
     )
 }
 
-export default Index
+export default Profile

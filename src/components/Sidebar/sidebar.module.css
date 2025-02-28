@@ -10,3 +10,10 @@
     padding-bottom: 80px;
   }
   
+  .content_buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .log_out {
+    margin-top: auto;
+  }

@@ -1,7 +1,7 @@
 
 const Exchange = () => {
     return (
-        <div>Exchange</div>
+        <div>Intercambiar</div>
     )
 }
 

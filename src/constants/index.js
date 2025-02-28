@@ -1,3 +1,11 @@
+export const BASE_URL = "https://api.qa.vitawallet.io/api/"
+export const SIGN_IN = "auth/sign_in"
+export const GET_PROFILE = "profile"
+export const GET_USER_PRICES = "users/get_crypto_multi_prices"
+export const GET_TRANSACTIONS = "transactions"
+export const POST_TRANSACTION = "transactions/exchange"
+
+
 export const colors = {
     black: "#010E11",
     primaryGrey: "#B9C1C2",

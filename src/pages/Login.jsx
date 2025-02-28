@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext"
 import TextField from "../components/TextField/TextField"
 import eyeOff from "../assets/icons/eye-off.png"
 import Button from "../components/Button/Button"
 // import moneyIncome from "../assets/ilustrations/money-income.png"
 
 const Login = () => {
+    const { login, user, isAuthenticated } = useContext(AuthContext);
     return (
         <section style={{ padding: 20 }}>
             <h1 style={{ fontSize: 48 }}>Iniciar sesión</h1>

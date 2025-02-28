@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 import styles from "./sidebar-button.module.css";
+import { NavLink } from "react-router-dom";
 
-const SidebarButton = ({ label, onSubmit, onClick, type, disabled, }) => {
+const SidebarButton = ({ to, label }) => {
     return (
-        <button
-            className={styles.button}
-            onSubmit={onSubmit}
-            type={type}
-            onClick={onClick}
-            disabled={disabled}
+        <NavLink
+            to={to}
+            className={({ isActive }) =>
+                isActive ? `${styles.button} ${styles.active}` : styles.button
+            }
+
         >
             {label}
-        </button>
+        </NavLink>
     );
 };
 
