@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styles from "./styles/login.module.css"
+import Cookies from "js-cookie";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext"
@@ -7,12 +8,14 @@ import TextField from "../components/TextField/TextField"
 import eyeOff from "../assets/icons/eye-off.png"
 import eye from "../assets/icons/eye.png"
 import check from "../assets/icons/check.png"
-import Button from "../components/Button/Button"
 import moneyIncome from "../assets/ilustrations/money-income.png"
+import Button from "../components/Button/Button"
 
 const Login = () => {
     const navigate = useNavigate()
-    const { login, user, isAuthenticated } = useContext(AuthContext);
+    const { login, user, isAuthenticated, error } = useContext(AuthContext);
+    const [loginIsValid, setLoginIsValid] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [emailIsCorrectIcon, setEmailIsCorrectIcon] = useState(false)
     const [viewPassword, setViewPassword] = useState(false)
     const [form, setForm] = useState({
@@ -30,19 +33,50 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
         await login({
             email: form.email,
             password: form.password,
             dev_mode: "true"
         });
+        setIsLoading(false)
     };
 
     useEffect(() => {
-        if (isAuthenticated) {
+        if (!form.email) {
+            setEmailIsCorrectIcon(false);
+            setLoginIsValid(false);
+            return;
+        }
+
+        if (form.email.includes('@') && form.email.includes('.')) {
+            setEmailIsCorrectIcon(true);
+        } else {
+            setEmailIsCorrectIcon(false);
+            setLoginIsValid(false);
+            return;
+        }
+
+        if (form.password && form.password.length > 3) {
+            setLoginIsValid(true);
+        } else {
+            setLoginIsValid(false);
+        }
+    }, [form]);
+
+    useEffect(() => {
+        const accessToken = Cookies.get("access-token");
+        if (accessToken) {
+            navigate("/inicio");
+        }
+    }, [navigate]);
+
+    useEffect(() => {
+        if (isAuthenticated && user !== null) {
             console.log(user.data)
             navigate("/inicio");
         }
-    }, [isAuthenticated, navigate]);
+    }, [isAuthenticated, navigate, user]);
 
 
     return (
@@ -57,7 +91,7 @@ const Login = () => {
                         onChange={handleInputChange}
                         value={form.email}
                         placeholder={"juan@gmail.com"}
-                    // icon={ isAuthenticated === true ? }
+                        icon={emailIsCorrectIcon === true ? check : null}
                     />
                     <TextField
                         type={viewPassword ? "text" : "password"}
@@ -71,11 +105,13 @@ const Login = () => {
                     />
                     <p className={styles.forgotPassword}>¿Olvidaste tu contraseña?</p>
                     <Button
+                        disabled={loginIsValid ? false : true}
                         type="submit"
-                        backgroundType="gradient"
+                        backgroundType={loginIsValid ? "gradient" : "disabled"}
                         size="large"
-                        name="Iniciar sesión"
+                        name={isLoading ? "Cargando..." : "Iniciar sesión"}
                     />
+                    {error && <p style={{ color: "red" }}>¡Ups! {error.response.data.message}</p>}
                 </form>
                 <img src={moneyIncome} width={662} height={640} />
             </div>

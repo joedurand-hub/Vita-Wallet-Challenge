@@ -6,6 +6,8 @@ export const authReducer = (state, action) => {
             user: action.payload,
             isAuthenticated: true,
           };
+        case "LOGIN_FAIL":
+            return { ...state, error: action.payload };
       default:
         return state;
     }

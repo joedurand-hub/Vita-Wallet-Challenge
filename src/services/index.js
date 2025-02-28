@@ -1,5 +1,14 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 import { BASE_URL, SIGN_IN, GET_PROFILE, GET_USER_PRICES, GET_TRANSACTIONS, POST_TRANSACTION, APP_NAME } from "../constants";
+
+const headers = { 
+  "app-name": APP_NAME,
+  "access-token": Cookies.get("access-token"),
+  "uid": Cookies.get("uid"),
+  "expiry": Cookies.get("expiry"),
+  "client": Cookies.get("client"),
+ }
 
 export const apiService = {
     signIn: async (credentials) => {
@@ -8,31 +17,33 @@ export const apiService = {
             "Content-Type": "application/json",
             "app-name": APP_NAME
         }});
-      return response.data;
+        return { data: response.data, headers: response.headers };
     },
     
-    getProfile: async (token) => {
+    getProfile: async () => {
       const response = await axios.get(`${BASE_URL}${GET_PROFILE}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: headers
       });
       return response.data;
     },
   
     getUserPrices: async () => {
-      const response = await axios.get(`${BASE_URL}${GET_USER_PRICES}`);
-      return response.data;
-    },
-  
-    getTransactions: async (token) => {
-      const response = await axios.get(`${BASE_URL}${GET_TRANSACTIONS}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await axios.get(`${BASE_URL}${GET_USER_PRICES}`, {
+        headers: headers
       });
       return response.data;
     },
   
-    postTransaction: async (data, token) => {
+    getTransactions: async () => {
+      const response = await axios.get(`${BASE_URL}${GET_TRANSACTIONS}`, {
+        headers: headers
+      });
+      return response.data;
+    },
+  
+    postTransaction: async (data) => {
       const response = await axios.post(`${BASE_URL}${POST_TRANSACTION}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: headers
       });
       return response.data;
     },

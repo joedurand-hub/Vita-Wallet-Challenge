@@ -1,7 +1,10 @@
 
+.input {
+  padding-left: 13px
+}
+
 .input::placeholder {
     color: var(--secondary-grey);
     font-size: 15px;
-    padding-left: 13px;
   }
  
