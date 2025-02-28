@@ -1,7 +1,8 @@
-import TextField from "../components/TextField/Index"
+import TextField from "../components/TextField/TextField"
 import eyeOff from "../assets/icons/eye-off.png"
-import Button from "../components/Button/Index"
-import moneyIncome from "../assets/ilustrations/money-income.png"
+import Button from "../components/Button/Button"
+// import moneyIncome from "../assets/ilustrations/money-income.png"
+
 const Login = () => {
     return (
         <section style={{ padding: 20 }}>
@@ -26,7 +27,7 @@ const Login = () => {
                     }>¿Olvidaste tu contraseña?</p>
                     <Button backgroundType="disabled" size="large" name="Iniciar sesión" />
                 </form>
-                <img src={moneyIncome} width={662} height={640} />
+                {/* <img src={moneyIncome} width={662} height={640} /> */}
             </div >
         </section>
     )

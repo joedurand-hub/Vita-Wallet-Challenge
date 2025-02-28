@@ -1,0 +1,18 @@
+.history {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--secondary-grey);
+    padding: 8px 0;
+  }
+  
+  .amountPositive {
+    color: var(--secondary-blue);
+  }
+  
+  .amountNegative {
+    color: var(--red);
+  }
+  

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SidebarButton from "../SidebarButton/Index";
+import SidebarButton from "../SidebarButton/SidebarButton";
 import styles from "./sidebar.module.css";
 
 const Sidebar = () => {

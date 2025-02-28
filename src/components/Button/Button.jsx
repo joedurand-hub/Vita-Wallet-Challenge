@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./button.module.css"
-const Button = ({ name, size, onSubmit, onClick, type, disabled, backgroundType }) => {
 
+const Button = ({ name, size, onSubmit, onClick, type, disabled, backgroundType }) => {
 
     return (
         <button
