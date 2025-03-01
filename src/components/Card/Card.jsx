@@ -2,13 +2,15 @@
 import styles from "./card.module.css";
 
 const Card = ({ currency, icon, balance }) => {
+    if (!currency || !balance) return
+
     return (
         <div className={styles.card}>
             <div className={styles.cardHeader}>
-                <h3 className={styles.currency}>{currency || "Peso chileno"}</h3>
+                <h3 className={styles.currency}>{currency}</h3>
                 <img src={icon} width={24} height={24} alt="currency icon" />
             </div>
-            <p className={styles.balance}>{balance || "$ 900.000,00"}</p>
+            <p className={styles.balance}>{balance}</p>
         </div>
     );
 };

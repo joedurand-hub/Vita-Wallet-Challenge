@@ -1,11 +1,12 @@
+import Index from './routes/Index'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import Index from './routes/Index'
-import "./index.css";
 import { ErrorBoundary } from "react-error-boundary";
 import { AuthProvider } from './context/AuthContext';
 import { UserProvider } from './context/UserContext';
+import { TransactionsProvider } from './context/TransactionsContext';
+import "./index.css";
 
 function fallbackRender({ error }) {
   return (
@@ -22,7 +23,9 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <AuthProvider>
           <UserProvider>
-            <Index />
+            <TransactionsProvider>
+              <Index />
+            </TransactionsProvider>
           </UserProvider>
         </AuthProvider>
       </BrowserRouter>

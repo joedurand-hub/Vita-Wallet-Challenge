@@ -8,6 +8,15 @@
     padding: 8px 0;
   }
   
+  .container_transaction {
+    display: flex;
+    gap: 5px
+  }
+
+  .history_transaction {
+    font-weight: bold;
+  }
+  
   .amountPositive {
     color: var(--secondary-blue);
   }

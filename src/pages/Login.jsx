@@ -112,7 +112,7 @@ const Login = () => {
                     />
                     {error && <p style={{ color: "red" }}>¡Ups! {error.response.data.message}</p>}
                 </form>
-                <img src={moneyIncome} width={662} height={640} />
+                <img src={moneyIncome} width={662} height={640} alt="Money - background image" />
             </div>
         </section>
     )
