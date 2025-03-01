@@ -14,7 +14,7 @@ const Index = ({ htmlFor, label, placeholder, type, onChange, value, name, icon,
           value={value}
           placeholder={placeholder}
           name={name}
-          style={{ width: "100%", border: "1px solid", borderRadius: 6, borderWidth: 2, borderColor: colors.secondaryGrey, height: 54, paddingRight: "30px" }} // Espacio para el icono
+          style={{ width: "100%", border: "1px solid", borderRadius: 6, borderWidth: 2, borderColor: colors.secondaryGrey, height: 34, paddingRight: "30px" }} // Espacio para el icono
         />
         {icon && (
           <img

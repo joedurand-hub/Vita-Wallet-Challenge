@@ -9,10 +9,10 @@ import Recharge from "../pages/Recharge";
 import Help from "../pages/Help";
 
 const Index = () => {
+
     return (
         <Routes>
             <Route index element={<Login />} path="/" />
-
             <Route element={<Layout />}>
                 <Route element={<Home />} path="/inicio" />
                 <Route element={<Transfer />} path="/transferir" />
