@@ -29,9 +29,7 @@ const currencyNames = {
 
 const Home = () => {
     const { userData } = useContext(UserContext)
-    console.log(userData)
     const { transactionsData } = useContext(TransactionsContext)
-    console.log(transactionsData)
     const balances = userData?.data.attributes.balances
     return (
         <div className={styles.container_home}>

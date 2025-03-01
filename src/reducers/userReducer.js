@@ -5,6 +5,11 @@ export const userReducer = (state, action) => {
             ...state,
             userData: action.payload,
           };
+      case "USER_PRICES":
+        return {
+          ...state,
+          userPrices: action.payload
+        }
       default:
         return state;
     }

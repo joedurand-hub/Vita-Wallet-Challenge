@@ -40,3 +40,9 @@
 .name {
     color: var(--primary-blue);
 }
+
+.available_balance {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--secondary-blue)
+}

@@ -9,7 +9,8 @@ const UserContext = createContext()
 
 const UserProvider = ({ children }) => {
     const initialState = {
-        userData: null
+        userData: null,
+        userPrices: {}
     }
     const [state, dispatch] = useReducer(userReducer, initialState);
 
@@ -18,10 +19,15 @@ const UserProvider = ({ children }) => {
         dispatch({ type: "USER_DATA", payload: data });
     }
 
+    const getPrices = async () => {
+        const data = await apiService.getUserPrices()
+        dispatch({ type: "USER_PRICES", payload: data })
+    }
 
     useEffect(() => {
         if (Cookies.get("access-token")) {
             getProfile();
+            getPrices()
         }
     }, []);
 
