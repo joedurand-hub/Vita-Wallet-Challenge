@@ -5,6 +5,7 @@ import Index from './routes/Index'
 import "./index.css";
 import { ErrorBoundary } from "react-error-boundary";
 import { AuthProvider } from './context/AuthContext';
+import { UserProvider } from './context/UserContext';
 
 function fallbackRender({ error }) {
   return (
@@ -20,7 +21,9 @@ createRoot(document.getElementById('root')).render(
     <ErrorBoundary fallbackRender={fallbackRender}>
       <BrowserRouter>
         <AuthProvider>
-          <Index />
+          <UserProvider>
+            <Index />
+          </UserProvider>
         </AuthProvider>
       </BrowserRouter>
     </ErrorBoundary>

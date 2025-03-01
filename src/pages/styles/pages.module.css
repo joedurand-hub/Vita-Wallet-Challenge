@@ -27,3 +27,16 @@
     position: relative;
     justify-content: end;
 }
+.container_home {
+    padding: 50px
+}
+.hi { 
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px
+}
+
+.name {
+    color: var(--primary-blue);
+}

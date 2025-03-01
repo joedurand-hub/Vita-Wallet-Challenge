@@ -24,7 +24,7 @@ export const apiService = {
       const response = await axios.get(`${BASE_URL}${GET_PROFILE}`, {
         headers: headers
       });
-      return response.data;
+      return {data: response.data};
     },
   
     getUserPrices: async () => {

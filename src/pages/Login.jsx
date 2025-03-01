@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import styles from "./styles/login.module.css"
 import Cookies from "js-cookie";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ import eye from "../assets/icons/eye.png"
 import check from "../assets/icons/check.png"
 import moneyIncome from "../assets/ilustrations/money-income.png"
 import Button from "../components/Button/Button"
+import styles from "./styles/pages.module.css"
 
 const Login = () => {
     const navigate = useNavigate()
@@ -73,7 +73,6 @@ const Login = () => {
 
     useEffect(() => {
         if (isAuthenticated && user !== null) {
-            console.log(user.data)
             navigate("/inicio");
         }
     }, [isAuthenticated, navigate, user]);
