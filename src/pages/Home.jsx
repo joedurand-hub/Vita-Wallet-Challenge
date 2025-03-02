@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import coin from "../assets/icons/coin.png";
 import usdcIcon from "../assets/icons/usdc.png";
 import bitcoinIcon from "../assets/icons/Bitcoin.png";
@@ -32,10 +32,8 @@ const Home = () => {
     const { transactionsData } = useContext(TransactionsContext);
     const balances = userData?.data.attributes.balances;
 
-    useEffect(() => { }, [userData]);
-
     return (
-        <div className={styles.container_home}>
+        <section className={styles.container_home}>
             <div className={styles.hi}>
                 <img src={coin} width={45} height={45} alt="coin" />
                 <h1>
@@ -67,7 +65,7 @@ const Home = () => {
                     <History key={object.id} transaction={object} />
                 ))}
             </section>
-        </div>
+        </section>
     );
 };
 

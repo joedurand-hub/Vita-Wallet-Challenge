@@ -47,7 +47,7 @@ const Exchange = () => {
     }, [currencyToBeExchanged, currencyToBeReceived, amountToBeExchanged, searchDataCotization]);
 
     return (
-        <div className={styles.exchangeContainer}>
+        <section className={styles.exchangeContainer}>
             {!viewSummary ? (
                 <div className={styles.currencyAndButtonsContainer}>
                     <div>
@@ -123,7 +123,7 @@ const Exchange = () => {
                 </div>
             )}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        </div>
+        </section>
     );
 };
 

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import Cookies from "js-cookie";
 import { createContext, useReducer } from "react";
 import { apiService } from "../services";
 import { userReducer } from "../reducers/userReducer";
@@ -15,26 +14,32 @@ const UserProvider = ({ children }) => {
     const [state, dispatch] = useReducer(userReducer, initialState);
 
     const getProfile = async () => {
-        const { data } = await apiService.getProfile()
-        dispatch({ type: "USER_DATA", payload: data });
+        try {
+            const { data } = await apiService.getProfile();
+            dispatch({ type: "USER_DATA", payload: data });
+        } catch (error) {
+            console.error("Error obteniendo el perfil:", error);
+        }
     }
 
     const getPrices = async () => {
-        const data = await apiService.getUserPrices()
-        dispatch({ type: "USER_PRICES", payload: data })
+        try {
+            const data = await apiService.getUserPrices();
+            dispatch({ type: "USER_PRICES", payload: data });
+        } catch (error) {
+            console.error("Error obteniendo los precios:", error);
+        }
     }
 
     useEffect(() => {
-        if (Cookies.get("access-token") !== undefined) {
-            getProfile();
+        getProfile();
+        getPrices()
+
+        const interval = setInterval(() => {
             getPrices()
+        }, 10000);
 
-            const interval = setInterval(() => {
-                getPrices()
-            }, 10000);
-
-            return () => clearInterval(interval);
-        }
+        return () => clearInterval(interval);
     }, []);
 
     return (

@@ -77,7 +77,6 @@ const Login = () => {
         }
     }, [isAuthenticated, navigate, user]);
 
-    console.log(Cookies.get("access-token"))
     return (
         <section className={styles.section}>
             <h1 className={styles.title}>Iniciar sesión</h1>
