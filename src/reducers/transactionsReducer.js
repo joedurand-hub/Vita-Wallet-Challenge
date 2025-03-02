@@ -5,6 +5,11 @@ export const transactionsReducer = (state, action) => {
             ...state,
             transactionsData: action.payload,
           };
+      case "CREATE_TRANSACTION":
+        return {
+          ...state,
+          transactionCreated: action.payload
+        }
       default:
         return state;
     }

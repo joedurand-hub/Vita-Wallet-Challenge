@@ -9,7 +9,8 @@ const TransactionsContext = createContext()
 
 const TransactionsProvider = ({ children }) => {
     const initialState = {
-        transactionsData: []
+        transactionsData: [],
+        transactionCreated: null
     }
 
     const [state, dispatch] = useReducer(transactionsReducer, initialState);
@@ -19,6 +20,11 @@ const TransactionsProvider = ({ children }) => {
         dispatch({ type: "GET_TRANSACTIONS", payload: data });
     }
 
+    const createTransaction = async (transaction) => {
+        const data = await apiService.postTransaction(transaction)
+        dispatch({ type: "CREATE_TRANSACTION", payload: data })
+    }
+
     useEffect(() => {
         if (Cookies.get("access-token")) {
             getTransactions();
@@ -26,7 +32,7 @@ const TransactionsProvider = ({ children }) => {
     }, []);
 
     return (
-        <TransactionsContext.Provider value={{ ...state }}>
+        <TransactionsContext.Provider value={{ ...state, createTransaction }}>
             {children}
         </TransactionsContext.Provider>
     )
