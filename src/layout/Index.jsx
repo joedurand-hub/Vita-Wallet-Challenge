@@ -5,7 +5,7 @@ const Index = () => {
     return (
         <div style={{ display: "flex", flexDirection: "row", height: "auto" }}>
             <Sidebar />
-            <main>
+            <main style={{ width: "100%" }}>
                 <Outlet />
             </main>
         </div>

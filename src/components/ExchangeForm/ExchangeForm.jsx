@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Button from "../Button/Button";
 import styles from "./exchange-form.module.css";
-import { useEffect } from "react";
 
 const ExchangeForm = ({ exchangeValues }) => {
     const [currencyToBeExchanged, setCurrencyToBeExchanged] = useState('');
@@ -39,43 +39,57 @@ const ExchangeForm = ({ exchangeValues }) => {
 
     return (
         <div className={styles.exchangeContainer}>
-            <label>Monto a intercambiar</label>
-            <div className={styles.inputGroup}>
-                <select
-                    onChange={(e) => setCurrencyToBeExchanged(e.target.value)}
-                    className={styles.currencySelect}
-                >
-                    {exchangeValues?.prices && Object.entries(exchangeValues.prices).map(([currency], index) => (
-                        <option key={index} value={currency}>{currency}</option>
-                    ))}
-                </select>
-                <input
-                    type="text"
-                    placeholder="$ 0,00"
-                    value={`$ ${amountToBeExchanged}`}
-                    onChange={(e) => {
-                        const value = e.target.value.replace("$", "").trim();
-                        setAmountToBeExchanged(value);
-                    }}
-                />
-            </div>
+            <div style={{ display: "flex", height: "90%", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                    <label>Monto a intercambiar</label>
+                    <div className={styles.inputGroup}>
+                        <select
+                            onChange={(e) => setCurrencyToBeExchanged(e.target.value)}
+                            className={styles.currencySelect}
+                        >
+                            {exchangeValues?.prices && Object.entries(exchangeValues.prices).map(([currency], index) => (
+                                <option key={index} value={currency}>{currency}</option>
+                            ))}
+                        </select>
+                        <input
+                            type="text"
+                            placeholder="$ 0,00"
+                            value={`$ ${amountToBeExchanged}`}
+                            onChange={(e) => {
+                                const value = e.target.value.replace("$", "").trim();
+                                setAmountToBeExchanged(value);
+                            }}
+                        />
+                    </div>
 
-            <label>Quiero recibir</label>
-            <div className={styles.inputGroup}>
-                <select
-                    onChange={(e) => setCurrencyToBeReceived(e.target.value)}
-                    className={styles.currencySelect}
-                >
-                    {exchangeValues?.prices && Object.entries(exchangeValues.prices).map(([currency], index) => (
-                        <option key={index} value={currency}>{currency}</option>
-                    ))}
-                </select>
-                <input
-                    type="text"
-                    placeholder="0,00"
-                    value={amountToBeReceived}
-                    readOnly
-                />
+                    <label>Quiero recibir</label>
+                    <div className={styles.inputGroup}>
+                        <select
+                            onChange={(e) => setCurrencyToBeReceived(e.target.value)}
+                            className={styles.currencySelect}
+                        >
+                            {exchangeValues?.prices && Object.entries(exchangeValues.prices).map(([currency], index) => (
+                                <option key={index} value={currency}>{currency}</option>
+                            ))}
+                        </select>
+                        <input
+                            type="text"
+                            placeholder="0,00"
+                            value={amountToBeReceived}
+                            readOnly
+                        />
+                    </div>
+                </div>
+
+                <div style={{ width: 450, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                    <Button
+                        name={"asd"}
+                        size=''
+                        backgroundType="outline" />
+                    <Button name={"asd"}
+                        size=''
+                        backgroundType="disabled" />
+                </div>
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import History from "../components/History/History"
 import { UserContext } from "../context/UserContext"
 import styles from "./styles/pages.module.css"
 import { TransactionsContext } from "../context/TransactionsContext"
+import { useEffect } from "react"
 
 const icons = {
     "US Dólar": usdIcon,
@@ -31,6 +32,10 @@ const Home = () => {
     const { userData } = useContext(UserContext)
     const { transactionsData } = useContext(TransactionsContext)
     const balances = userData?.data.attributes.balances
+
+    useEffect(() => {
+
+    }, [userData])
     return (
         <div className={styles.container_home}>
             <div className={styles.hi}>

@@ -3,11 +3,13 @@
     flex-direction: column;
     margin-top: 20px;
     gap: 10px;
-    max-width: 350px;
+    max-width: 450px;
+    height: -webkit-fill-available;
+    justify-content: space-between;
   }
   
   .inputGroup {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     overflow: hidden;
