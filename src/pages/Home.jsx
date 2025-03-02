@@ -1,14 +1,14 @@
 import { useContext } from "react"
 import coin from "../assets/icons/coin.png"
-import Card from "../components/Card/Card"
-import History from "../components/History/History"
-import { UserContext } from "../context/UserContext"
-import styles from "./styles/pages.module.css"
 import usdcIcon from "../assets/icons/usdc.png"
 import bitcoinIcon from "../assets/icons/Bitcoin.png"
 import usdIcon from "../assets/icons/coin.png"
 import chileIcon from "../assets/icons/Chile.png"
 import theterIcon from "../assets/icons/theter.jpg"
+import Card from "../components/Card/Card"
+import History from "../components/History/History"
+import { UserContext } from "../context/UserContext"
+import styles from "./styles/pages.module.css"
 import { TransactionsContext } from "../context/TransactionsContext"
 
 const icons = {

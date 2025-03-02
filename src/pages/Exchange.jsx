@@ -5,13 +5,11 @@ import ExchangeForm from "../components/ExchangeForm/ExchangeForm"
 
 const Exchange = () => {
     const { userData, userPrices } = useContext(UserContext)
-    console.log(userData)
-    console.log(userPrices)
     return (
         <div style={{ padding: 50 }}>
             <h1 style={{ fontSize: 28 }}>¿Qué deseas intercambiar?</h1>
-            <h2 className={styles.available_balance}>Saldo disponible: </h2>
-            <ExchangeForm />
+            <h2 className={styles.available_balance}>Saldo disponible: $ {userData?.data.attributes.balances.usd} usd </h2>
+            <ExchangeForm exchangeValues={userPrices} />
         </div>
     )
 }
