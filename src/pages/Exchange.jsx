@@ -24,12 +24,12 @@ const Exchange = () => {
     const searchDataReceiveCotization = newArrCoins?.find((element) => element.coin === currencyToBeReceived);
 
     const handleTransaction = async () => {
-        const { data } = await createTransaction({
+        setIsModalOpen(true)
+        await createTransaction({
             currency_sent: currencyToBeExchanged,
             currency_received: currencyToBeReceived,
             amount_sent: amountToBeReceived
         })
-        if (data === null) setIsModalOpen(true)
     }
 
     useEffect(() => {

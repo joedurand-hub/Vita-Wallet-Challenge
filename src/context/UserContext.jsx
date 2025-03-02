@@ -25,9 +25,15 @@ const UserProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        if (Cookies.get("access-token")) {
+        if (Cookies.get("access-token") !== undefined) {
             getProfile();
             getPrices()
+
+            const interval = setInterval(() => {
+                getPrices()
+            }, 10000);
+
+            return () => clearInterval(interval);
         }
     }, []);
 

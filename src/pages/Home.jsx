@@ -1,16 +1,15 @@
-import { useContext } from "react"
-import coin from "../assets/icons/coin.png"
-import usdcIcon from "../assets/icons/usdc.png"
-import bitcoinIcon from "../assets/icons/Bitcoin.png"
-import usdIcon from "../assets/icons/coin.png"
-import chileIcon from "../assets/icons/Chile.png"
-import theterIcon from "../assets/icons/theter.jpg"
-import Card from "../components/Card/Card"
-import History from "../components/History/History"
-import { UserContext } from "../context/UserContext"
-import styles from "./styles/pages.module.css"
-import { TransactionsContext } from "../context/TransactionsContext"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react";
+import coin from "../assets/icons/coin.png";
+import usdcIcon from "../assets/icons/usdc.png";
+import bitcoinIcon from "../assets/icons/Bitcoin.png";
+import usdIcon from "../assets/icons/coin.png";
+import chileIcon from "../assets/icons/Chile.png";
+import theterIcon from "../assets/icons/theter.jpg";
+import Card from "../components/Card/Card";
+import History from "../components/History/History";
+import { UserContext } from "../context/UserContext";
+import { TransactionsContext } from "../context/TransactionsContext";
+import styles from "./styles/pages.module.css";
 
 const icons = {
     "US Dólar": usdIcon,
@@ -29,49 +28,47 @@ const currencyNames = {
 };
 
 const Home = () => {
-    const { userData } = useContext(UserContext)
-    const { transactionsData } = useContext(TransactionsContext)
-    const balances = userData?.data.attributes.balances
+    const { userData } = useContext(UserContext);
+    const { transactionsData } = useContext(TransactionsContext);
+    const balances = userData?.data.attributes.balances;
 
-    useEffect(() => {
+    useEffect(() => { }, [userData]);
 
-    }, [userData])
     return (
         <div className={styles.container_home}>
             <div className={styles.hi}>
                 <img src={coin} width={45} height={45} alt="coin" />
-                <h1>¡Hola <span className={styles.name}>{userData && userData.data.attributes.first_name}!</span> </h1>
+                <h1>
+                    ¡Hola{" "}
+                    <span className={styles.name}>
+                        {userData && userData.data.attributes.first_name}
+                    </span>
+                    !
+                </h1>
             </div>
-            <section style={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
+            <section className={styles.section}>
                 <h2>Mis saldos</h2>
-                <div style={{
-                    display: "flex", flexDirection: "row", gap: 15,
-                    // overflowX: "scroll", overFlowY: "hidden", whiteSpace: "nowrap" 
-
-                }}>
-                    {balances && Object.entries(balances).map(([currency, amount]) => {
-                        const currencyFullName = currencyNames[currency] || currency;
-                        return (
-                            <Card
-                                key={currency}
-                                currency={currencyFullName}
-                                balance={amount}
-                                icon={icons[currencyFullName]}
-                            />
-                        );
-                    })}
+                <div className={styles.balancesContainer}>
+                    {balances &&
+                        Object.entries(balances).map(([currency, amount]) => {
+                            const coinAndCurrencyName = currencyNames[currency] || currency;
+                            return (
+                                <Card
+                                    key={currency}
+                                    currency={coinAndCurrencyName}
+                                    balance={amount}
+                                    icon={icons[coinAndCurrencyName]}
+                                />
+                            );
+                        })}
                 </div>
-                <h2>
-                    Historial
-                </h2>
-                {transactionsData?.map((object) => {
-                    return (
-                        < History key={object.id} transaction={object} />
-                    )
-                })}
+                <h2>Historial</h2>
+                {transactionsData?.map((object) => (
+                    <History key={object.id} transaction={object} />
+                ))}
             </section>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

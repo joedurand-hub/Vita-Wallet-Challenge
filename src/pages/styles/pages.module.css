@@ -30,6 +30,8 @@
 .container_home {
     padding: 50px
 }
+
+
 .hi { 
     display: flex;
     flex-direction: row; 
@@ -40,6 +42,18 @@
 .name {
     color: var(--primary-blue);
 }
+
+.section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .balancesContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
 
 .available_balance {
     font-weight: bold;
