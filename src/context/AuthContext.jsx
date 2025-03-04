@@ -16,9 +16,8 @@ const AuthProvider = ({ children }) => {
     const login = async (credentials) => {
         try {
             const { data, headers } = await apiService.signIn(credentials);
-            dispatch({ type: "LOGIN_SUCCESS", payload: data });
 
-            if (headers) {
+            if (data && headers) {
                 const { "access-token": accessToken, client, expiry, uid } = headers;
                 const now = Math.floor(Date.now() / 1000);
                 const expiresInSeconds = expiry - now;
@@ -28,6 +27,7 @@ const AuthProvider = ({ children }) => {
                 Cookies.set("client", client, { expires: expiresInDays, secure: true, sameSite: "Strict" });
                 Cookies.set("expiry", expiry, { expires: expiresInDays, secure: true, sameSite: "Strict" });
                 Cookies.set("uid", uid, { expires: expiresInDays, secure: true, sameSite: "Strict" });
+                dispatch({ type: "LOGIN_SUCCESS", payload: data });
             }
         } catch (error) {
             dispatch({ type: "LOGIN_FAIL", payload: error });

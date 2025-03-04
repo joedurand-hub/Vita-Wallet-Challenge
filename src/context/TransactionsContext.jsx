@@ -17,6 +17,7 @@ const TransactionsProvider = ({ children }) => {
 
     const getTransactions = async () => {
         const { data } = await apiService.getTransactions()
+        console.log("transactions", data)
         dispatch({ type: "GET_TRANSACTIONS", payload: data });
     }
 

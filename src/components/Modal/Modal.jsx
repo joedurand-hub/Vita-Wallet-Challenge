@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styles from "./Modal.module.css";
+import styles from "./modal.module.css";
 import banknote from "../../assets/ilustrations/banknote.png"
 
 const Modal = ({ isOpen, onClose }) => {

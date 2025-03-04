@@ -65,14 +65,7 @@ const Login = () => {
     }, [form]);
 
     useEffect(() => {
-        const accessToken = Cookies.get("access-token");
-        if (accessToken) {
-            navigate("/inicio");
-        }
-    }, [navigate]);
-
-    useEffect(() => {
-        if (isAuthenticated && user !== null) {
+        if (isAuthenticated && user !== null && Cookies.get("access-token")) {
             navigate("/inicio");
         }
     }, [isAuthenticated, navigate, user]);
