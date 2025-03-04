@@ -11,6 +11,7 @@ documento sobre requisitos para completar el challenge -tal vez no estén enviad
 2- En caso de querer ver el la resolución del challenge con los extras añadidos, simplemente descargue o clone el repositorio desde su ruta raiz directamente.
 
 3- Realizar 'pnpm install' en la carpeta raíz del proyecto.
+
 3.1- Si no posee pnpm puede instalarlo fácilmente siguiendo las siguientes instrucciones https://pnpm.io/es/installation
 
 4- Ejecutar 'pnpm dev'
