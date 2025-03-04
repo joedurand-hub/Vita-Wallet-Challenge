@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Cookies from "js-cookie";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";

@@ -42,7 +42,6 @@ export const apiService = {
     },
   
     postTransaction: async (data) => {
-      console.log("data en el post service", data)
       const response = await axios.post(`${BASE_URL}${POST_TRANSACTION}`, data, {
         headers: headers
       });
