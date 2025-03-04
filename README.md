@@ -63,6 +63,6 @@ La API para crear una transacción no me funcionó, siempre da error 429 too man
 
 No estoy seguro si olvido algo más, pero fue muy divertido de realizar, más aún el manejo de objetos para las transacciones, es realmente interesante.
 
-Que anden bien!
+Que anden bien! :)
 
 Abrazo.
