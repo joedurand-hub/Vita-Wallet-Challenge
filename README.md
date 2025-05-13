@@ -29,9 +29,6 @@ de alguna librería de componentes, pero para un proyecto así de "simple" en t�
 
 Por otro lado, consideraba si usar axios o fecth, opté por escribir menos código y delegar eso en axios.
 
-No seguí el figma al 100% ya que las medidas al estar en píxeles, veo que fueron hechas en una pantalla más grande que las mías
-(monitor de 19 pulgadas y notebook de 14 pulgadas), por lo cual al tomarlas exactamente igual, en mi pantalla se producía un desplazamiento (scroll horizontal).
-
 Dicho esto, procedí primero con la UI, luego con los estados globales y solicitudes al backend, y por último implementando las transacciones.
 
 Se muestra en el figma una UI para un Registro, pero luego no se incluye en el flujo de trabajo ni en el JSON para probar en postam, así que dí por hecho que no era necesario maquetarlo.
