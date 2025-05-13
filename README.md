@@ -13,9 +13,9 @@ Para correr este proyecto debe:
 4- Abrir http://localhost:5173
 
 
-*---------------------------------------------------*
+*--*
 En caso de querer ahorrar tiempo, también pueden probarlo desde https://vita-wallet-challenge.netlify.app/ 
-*---------------------------------------------------*
+*--*
 
 A continuación les detallo mi análisis del proyecto, a quien desee leerlo, también puedo explicarlo en persona:
 
